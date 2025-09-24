@@ -1,8 +1,14 @@
 package Pages;
 
+import Driver.DriverManager;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage {
     private final AndroidDriver driver;
@@ -12,18 +18,18 @@ public class LoginPage {
     }
 
     private WebElement usernameField() {
-        return By.id("user-name").findElement(driver);
+        return DriverManager.waitForElementToBeVisible("test-Username");
     }
 
     private WebElement passwordField() {
-        return By.className("test-Password").findElement(driver);
+        return DriverManager.waitForElementToBeVisible("test-Password");
     }
     private WebElement loginButton() {
-        return By.className("password").findElement(driver);
+        return DriverManager.waitForElementToBeVisible("test-LOGIN");
     }
 
     private String errorMessage(String msg) {
-        return By.xpath("//*[@data-test='error']").findElement(driver)
+        return driver.findElement(By.xpath("//*[@data-test='error']"))
                 .getText();
     }
 
