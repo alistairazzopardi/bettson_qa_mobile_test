@@ -25,6 +25,7 @@ public class DriverManager {
                 .setFullReset(false)
                 .setAppPackage("com.swaglabsmobileapp")
                 .setAppActivity("com.swaglabsmobileapp.SplashActivity")
+                .setAutomationName("UiAutomator2")
                 .autoGrantPermissions();
 
 
@@ -40,6 +41,11 @@ public class DriverManager {
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.accessibilityId(elementId)));
+    }
 
+    public static WebElement waitForElementToBeClickable(String elementId)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        return wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.accessibilityId(elementId)));
     }
 }

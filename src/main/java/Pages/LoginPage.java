@@ -24,9 +24,6 @@ public class LoginPage {
     private WebElement passwordField() {
         return DriverManager.waitForElementToBeVisible("test-Password");
     }
-    private WebElement loginButton() {
-        return DriverManager.waitForElementToBeVisible("test-LOGIN");
-    }
 
     private String errorMessage(String msg) {
         return driver.findElement(By.xpath("//*[@data-test='error']"))
@@ -42,7 +39,7 @@ public class LoginPage {
     }
 
     public void clickLogin() {
-        loginButton().click();
+        DriverManager.waitForElementToBeClickable("test-LOGIN").click();
     }
 
     public boolean isErrorMessageDisplayed(String msg) {
