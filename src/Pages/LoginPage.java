@@ -12,18 +12,18 @@ public class LoginPage {
     }
 
     private WebElement usernameField() {
-        return driver.findElement(By.id("user-name"));
+        return By.id("user-name").findElement(driver);
     }
 
     private WebElement passwordField() {
-        return driver.findElement(By.className("test-Password"));
+        return By.className("test-Password").findElement(driver);
     }
     private WebElement loginButton() {
-        return driver.findElement(By.className("password"));
+        return By.className("password").findElement(driver);
     }
 
     private String errorMessage(String msg) {
-        return driver.findElement(By.xpath("//*[@data-test='error']"))
+        return By.xpath("//*[@data-test='error']").findElement(driver)
                 .getText();
     }
 

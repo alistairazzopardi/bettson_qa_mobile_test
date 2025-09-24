@@ -22,9 +22,9 @@
     </dependency>
 
       <dependency>
-          <groupId>io.cucumber</groupId>
-          <artifactId>query</artifactId>
-          <version>13.6.0</version>
+          <groupId>org.seleniumhq.selenium</groupId>
+          <artifactId>selenium-java</artifactId>
+          <version>4.14.0</version>
       </dependency>
 
       <dependency>
@@ -44,7 +44,6 @@
           <artifactId>cucumber-java</artifactId>
           <version>7.27.0</version>
       </dependency>
-
 
   </dependencies>
 </project>
