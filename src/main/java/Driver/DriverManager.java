@@ -3,8 +3,6 @@ package Driver;
 import java.net.MalformedURLException;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
-import org.openqa.selenium.WebElement;
-
 import java.net.URL;
 
 public class DriverManager {
@@ -14,9 +12,17 @@ public class DriverManager {
         UiAutomator2Options options = new UiAutomator2Options()
                 .setPlatformName("Android")
                 .setDeviceName("dead23b55c8d")
-                .setApp("C:\\Users\\Alist\\CrossDevice\\POCO X4 Pro 5G\\storage\\Download");
+                .setApp("C:\\Users\\Alist\\Downloads\\SauceLabs.apk")
+                .ignoreHiddenApiPolicyError()
+                .setNoReset(true)
+                .setFullReset(false)
+                .setAppPackage("com.swaglabsmobileapp")
+                .setAppActivity("com.swaglabsmobileapp.SplashActivity")
+                .autoGrantPermissions();
 
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
+
+
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/"), options);
     }
 
     public static void quitDriver() {
