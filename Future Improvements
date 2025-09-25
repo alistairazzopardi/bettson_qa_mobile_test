@@ -1,0 +1,5 @@
+1. Improve the flow between one test another by clearing cache and navigating back to homepage quickly
+2. Parallel test execution (not required in this case, but tests may run much faster)
+3. Configurable test case data - such as timings.
+4. Testing e2e; (checking that UI was updated, but asserting that value has also been updated on the backend)
+5. Device coverage (goes with parallel testing) - more devices with different sizes and models
