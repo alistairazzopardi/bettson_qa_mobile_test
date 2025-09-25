@@ -5,8 +5,6 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
 
-import static Driver.DriverManager.driver;
-
 public class LoginPage {
     private final WebElement usernameField;
     private final WebElement passwordField;

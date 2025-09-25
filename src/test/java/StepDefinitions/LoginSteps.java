@@ -6,11 +6,9 @@ import Pages.ProductPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.messages.types.Hook;
-import org.testng.Assert;
 
 public class LoginSteps {
-    private LoginPage  loginPage;
+    private LoginPage loginPage;
 
     @Given("the user is on the login page")
     public void userOnLoginPage() throws Exception {
