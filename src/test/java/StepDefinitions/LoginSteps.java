@@ -5,6 +5,7 @@ import Pages.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.messages.types.Hook;
 import org.testng.Assert;
 
 public class LoginSteps {
@@ -12,7 +13,6 @@ public class LoginSteps {
 
     @Given("the user is on the login page")
     public void userOnLoginPage() throws Exception {
-        DriverManager.initDriver();
         loginPage = new LoginPage(DriverManager.driver);
     }
 
@@ -25,12 +25,15 @@ public class LoginSteps {
     @When("the user clicks the login CTA")
     public void clickLoginCTA() {
         loginPage.clickLogin();
-        DriverManager.quitDriver();
     }
 
     @Then("an error message {string} should be displayed")
     public void verifyErrorMessageDisplayed(String message) {
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(message));
-        DriverManager.quitDriver();
+    }
+
+    @Then("the user is redirected to the products screen")
+    public void verifyRedirectionAfterLogin() {
+        loginPage.loginScreenIsNotVisible();
     }
 }

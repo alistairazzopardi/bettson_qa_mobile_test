@@ -3,7 +3,8 @@ Feature: Login Page
   Scenario: Successful login with valid credentials
     Given the user is on the login page
     When the user enters username "standard_user" and password "secret_sauce"
-    Then the user clicks the login CTA
+    And the user clicks the login CTA
+    Then the user is redirected to the products screen
 
   Scenario: Login with invalid credentials
     Given the user is on the login page

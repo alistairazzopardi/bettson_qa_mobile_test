@@ -5,24 +5,27 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class LoginPage {
     private final AndroidDriver driver;
+    private final WebElement usernameField;
+    private final WebElement passwordField;
+    private final WebElement loginButton;
 
     public LoginPage(AndroidDriver driver) {
         this.driver = driver;
+
+        usernameField = driver.findElement(AppiumBy.accessibilityId("test-Username"));
+        passwordField = driver.findElement(AppiumBy.accessibilityId("test-Password"));
+        loginButton = driver.findElement(AppiumBy.accessibilityId("test-LOGIN"));
     }
 
     private WebElement usernameField() {
-        return DriverManager.waitForElementToBeVisible("test-Username");
+        return DriverManager.waitForElementToBeVisible(usernameField);
     }
 
     private WebElement passwordField() {
-        return DriverManager.waitForElementToBeVisible("test-Password");
+        return DriverManager.waitForElementToBeVisible(passwordField);
     }
 
     private String errorMessage(String msg) {
@@ -39,10 +42,17 @@ public class LoginPage {
     }
 
     public void clickLogin() {
-        DriverManager.waitForElementToBeClickable("test-LOGIN").click();
+        DriverManager.waitForElementToBeClickable(loginButton).click();
     }
 
     public boolean isErrorMessageDisplayed(String msg) {
         return !errorMessage(msg).isEmpty();
+    }
+
+    public void loginScreenIsNotVisible()
+    {
+        DriverManager.waitForElementToNotBeVisible(usernameField);
+        DriverManager.waitForElementToNotBeVisible(passwordField);
+        DriverManager.waitForElementToNotBeVisible(loginButton);
     }
 }
