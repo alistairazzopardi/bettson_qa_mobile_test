@@ -1,14 +1,26 @@
 package Pages;
 
+import Driver.DriverManager;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
 
 public class ProductPage {
-    private final AndroidDriver driver;
+
+    private final WebElement productViewGroup;
+    private final WebElement menuButton;
+    private final WebElement shoppingCartButton;
 
     public ProductPage(AndroidDriver driver) {
-        this.driver = driver;
+        productViewGroup = driver.findElement(AppiumBy.accessibilityId("test-PRODUCTS"));
+        menuButton = driver.findElement(AppiumBy.accessibilityId("test-Menu"));
+        shoppingCartButton = driver.findElement(AppiumBy.accessibilityId("test-Cart"));
     }
 
-   // private bool
+   public void productScreenIsVisible()
+   {
+       DriverManager.waitForElementToBeVisible(productViewGroup);
+       DriverManager.waitForElementToBeClickable(menuButton);
+       DriverManager.waitForElementToBeClickable(shoppingCartButton);
+   }
 }

@@ -23,6 +23,12 @@ public class DriverManager {
         return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
+    public static WebElement waitForElementToBeVisible(String elementId)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.accessibilityId(elementId)));
+    }
+
     public static void waitForElementToNotBeVisible(WebElement webElement)
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));

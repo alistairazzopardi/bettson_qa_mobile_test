@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import Driver.DriverManager;
 import Pages.LoginPage;
+import Pages.ProductPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,13 +28,16 @@ public class LoginSteps {
         loginPage.clickLogin();
     }
 
-    @Then("an error message {string} should be displayed")
-    public void verifyErrorMessageDisplayed(String message) {
-        Assert.assertTrue(loginPage.isErrorMessageDisplayed(message));
+    @Then("an error message should be displayed")
+    public void verifyErrorMessageDisplayed() {
+        loginPage.waitForErrorMessageToBeVisible();
     }
 
     @Then("the user is redirected to the products screen")
     public void verifyRedirectionAfterLogin() {
         loginPage.loginScreenIsNotVisible();
+
+        ProductPage productPage = new ProductPage(DriverManager.driver);
+        productPage.productScreenIsVisible();
     }
 }

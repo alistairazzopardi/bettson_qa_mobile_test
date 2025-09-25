@@ -10,4 +10,4 @@ Feature: Login Page
     Given the user is on the login page
     When the user enters username "wrong_user" and password "wrong_pass"
     And the user clicks the login CTA
-    Then an error message "Epic sadface: Username and password do not match any user in this service" should be displayed
+    Then an error message should be displayed

@@ -3,17 +3,16 @@ package Pages;
 import Driver.DriverManager;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import static Driver.DriverManager.driver;
+
 public class LoginPage {
-    private final AndroidDriver driver;
     private final WebElement usernameField;
     private final WebElement passwordField;
     private final WebElement loginButton;
 
     public LoginPage(AndroidDriver driver) {
-        this.driver = driver;
 
         usernameField = driver.findElement(AppiumBy.accessibilityId("test-Username"));
         passwordField = driver.findElement(AppiumBy.accessibilityId("test-Password"));
@@ -28,9 +27,8 @@ public class LoginPage {
         return DriverManager.waitForElementToBeVisible(passwordField);
     }
 
-    private String errorMessage(String msg) {
-        return driver.findElement(By.xpath("//*[@data-test='error']"))
-                .getText();
+    public void waitForErrorMessageToBeVisible() {
+        DriverManager.waitForElementToBeVisible("test-Error message");
     }
 
     public void enterUsername(String username) {
@@ -43,10 +41,6 @@ public class LoginPage {
 
     public void clickLogin() {
         DriverManager.waitForElementToBeClickable(loginButton).click();
-    }
-
-    public boolean isErrorMessageDisplayed(String msg) {
-        return !errorMessage(msg).isEmpty();
     }
 
     public void loginScreenIsNotVisible()
