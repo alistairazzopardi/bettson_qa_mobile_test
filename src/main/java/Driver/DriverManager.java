@@ -1,17 +1,11 @@
 package Driver;
 
-import java.net.MalformedURLException;
-
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.options.UiAutomator2Options;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.net.URL;
 import java.time.Duration;
 
 public class DriverManager {
@@ -23,10 +17,10 @@ public class DriverManager {
         return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
-    public static WebElement waitForElementToBeVisible(String elementId)
+    public static void waitForElementToBeVisible(String elementId)
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.accessibilityId(elementId)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.accessibilityId(elementId)));
     }
 
     public static void waitForElementToNotBeVisible(WebElement webElement)
